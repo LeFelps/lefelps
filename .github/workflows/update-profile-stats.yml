@@ -1,0 +1,71 @@
+name: Update profile statistics
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Run on Sundays; the calendar gate below limits updates to the first Sunday.
+    - cron: "17 9 * * 0"
+
+concurrency:
+  group: update-profile-statistics
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check monthly schedule
+        id: calendar
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" || 10#$(date -u +%d) -le 7 ]]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check out repository
+        if: steps.calendar.outputs.run == 'true'
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        if: steps.calendar.outputs.run == 'true'
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+
+      - name: Run generator tests
+        if: steps.calendar.outputs.run == 'true'
+        run: node --test tests/generate-github-stats.test.mjs
+
+      - name: Generate public statistics
+        if: steps.calendar.outputs.run == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_USER: LeFelps
+          OUTPUT_DIR: assets
+        run: node scripts/generate-github-stats.mjs
+
+      - name: Validate changes
+        if: steps.calendar.outputs.run == 'true'
+        run: git diff --check
+
+      - name: Commit generated assets
+        if: steps.calendar.outputs.run == 'true'
+        shell: bash
+        run: |
+          git add assets/github-stats-light.svg assets/github-stats-dark.svg
+          if git diff --cached --quiet; then
+            echo "Profile statistics are already current."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore(profile): refresh public GitHub stats"
+          git push origin HEAD:main

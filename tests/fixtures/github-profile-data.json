@@ -1,0 +1,75 @@
+{
+  "contributions": {
+    "contributionCalendar": {
+      "totalContributions": 120
+    },
+    "restrictedContributionsCount": 20,
+    "totalIssueContributions": 7,
+    "totalPullRequestContributions": 14
+  },
+  "repositories": [
+    {
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "languages": {
+        "edges": [
+          { "size": 600, "node": { "name": "TypeScript", "color": "#3178c6" } },
+          { "size": 200, "node": { "name": "JavaScript", "color": "#f1e05a" } }
+        ]
+      }
+    },
+    {
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "languages": {
+        "edges": [
+          { "size": 100, "node": { "name": "Python", "color": "#3572A5" } },
+          { "size": 50, "node": { "name": "HTML", "color": "#e34c26" } },
+          { "size": 25, "node": { "name": "CSS", "color": "#663399" } }
+        ]
+      }
+    },
+    {
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "languages": {
+        "edges": [
+          { "size": 700, "node": { "name": "C<&", "color": null } }
+        ]
+      }
+    },
+    {
+      "isArchived": true,
+      "isFork": false,
+      "isPrivate": false,
+      "languages": {
+        "edges": [
+          { "size": 999, "node": { "name": "Rust", "color": "#dea584" } }
+        ]
+      }
+    },
+    {
+      "isArchived": false,
+      "isFork": true,
+      "isPrivate": false,
+      "languages": {
+        "edges": [
+          { "size": 999, "node": { "name": "Go", "color": "#00ADD8" } }
+        ]
+      }
+    },
+    {
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "languages": {
+        "edges": [
+          { "size": 999, "node": { "name": "Swift", "color": "#F05138" } }
+        ]
+      }
+    }
+  ]
+}
