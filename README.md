@@ -12,17 +12,11 @@ An authenticated B3 market-monitoring application with watchlists, moving-averag
 
 `Next.js` · `TypeScript` · `PostgreSQL` · `Drizzle ORM` · `AWS SES` · `Vitest` · `Playwright`
 
-### [Facial Recognition](https://github.com/LeFelps/rec_facial)
+### [Unseal](https://unseal.fellcor.com)
 
-Browser-based face detection using MediaPipe with server-side AWS Rekognition search.
+A browser-based digital gift experience for creating personal packages with photos, notes, and paced reveals for someone special.
 
-`Next.js` · `TypeScript` · `MediaPipe` · `AWS Rekognition`
-
-### [Newsee](https://github.com/LeFelps/newsee-next-app)
-
-A collaborative authenticated news and blog frontend integrated with a Fastify API.
-
-`Next.js` · `TypeScript` · `NextAuth` · `Tailwind CSS` · `shadcn/ui`
+`Next.js` · `TypeScript` · `PostgreSQL` · `AWS S3` · `Stripe`
 
 ## Technical focus
 
