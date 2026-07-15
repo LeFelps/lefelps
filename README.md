@@ -33,9 +33,3 @@ A browser-based digital gift experience for creating personal packages with phot
 </picture>
 
 <sub>Generated from public GitHub data. Private activity is excluded.</sub>
-
-## How I use Codex
-
-This chart reflects the recurring AI-assisted engineering workflows I use across planning, diagnosis, implementation, review, and documentation.
-
-![Codex skills used](assets/codex-skills-used.png)
